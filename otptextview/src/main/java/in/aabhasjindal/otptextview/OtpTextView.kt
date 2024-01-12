@@ -242,6 +242,6 @@ class OtpTextView : FrameLayout {
         private const val DEFAULT_SPACE_TOP = 4
         private const val DEFAULT_SPACE_BOTTOM = 4
 
-        private const val PATTERN = "[1234567890]*"
+        private const val PATTERN = "[A-Za-z]*"
     }
 }
