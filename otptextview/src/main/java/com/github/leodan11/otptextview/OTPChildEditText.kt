@@ -1,9 +1,9 @@
-package `in`.yasir.otptextview
+package com.github.leodan11.otptextview
 
 import android.content.Context
 import android.text.InputType
 import android.util.AttributeSet
-import `in`.aabhasjindal.otptextview.R
+import androidx.core.content.ContextCompat
 
 internal class OTPChildEditText : androidx.appcompat.widget.AppCompatEditText {
 
@@ -21,7 +21,7 @@ internal class OTPChildEditText : androidx.appcompat.widget.AppCompatEditText {
 
     private fun init(context: Context) {
         isCursorVisible = false
-        setTextColor(context.resources.getColor(R.color.transparent))
+        setTextColor(ContextCompat.getColor(context, R.color.transparent))
         setBackgroundDrawable(null)
         inputType = InputType.TYPE_CLASS_TEXT
         setSelectAllOnFocus(false)
@@ -31,9 +31,9 @@ internal class OTPChildEditText : androidx.appcompat.widget.AppCompatEditText {
     public override fun onSelectionChanged(start: Int, end: Int) {
 
         val text = text
-        text?.let { text ->
-            if (start != text.length || end != text.length) {
-                setSelection(text.length, text.length)
+        text?.let { editable ->
+            if (start != editable.length || end != editable.length) {
+                setSelection(editable.length, editable.length)
                 return
             }
         }

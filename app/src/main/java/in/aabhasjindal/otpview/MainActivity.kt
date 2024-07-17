@@ -1,13 +1,13 @@
 package `in`.aabhasjindal.otpview
 
-import `in`.yasir.otptextview.OTPListener
-import `in`.yasir.otptextview.OtpTextView
-import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.github.leodan11.otptextview.OTPListener
+import com.github.leodan11.otptextview.OtpTextView
 import es.dmoral.toasty.Toasty
 
 class MainActivity : AppCompatActivity() {
@@ -16,11 +16,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val window = window
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.statusBarColor = resources.getColor(R.color.black)
-        }
+        val window = window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = ContextCompat.getColor(applicationContext, (R.color.black))
         val errorButton = findViewById<Button>(R.id.button)
         val successButton = findViewById<Button>(R.id.button2)
         otpTextView = findViewById(R.id.otp_view)

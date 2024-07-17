@@ -1,4 +1,4 @@
-package `in`.aabhasjindal.otptextview
+package com.github.leodan11.otptextview
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

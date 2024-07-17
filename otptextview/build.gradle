@@ -1,17 +1,17 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-android'
-group = 'com.github.aabhasjindal'
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
+}
+
+group = 'com.github.leodan11'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdk 34
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 21
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -24,13 +24,36 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
+    lint {
+        abortOnError false
+    }
+
+    namespace 'com.github.leodan11.otptextview'
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    api "androidx.core:core-ktx:1.1.0"
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 }

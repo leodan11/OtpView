@@ -1,4 +1,4 @@
-package `in`.yasir.otptextview
+package com.github.leodan11.otptextview
 
 interface OTPListener {
     /**

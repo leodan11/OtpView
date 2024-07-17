@@ -1,4 +1,4 @@
-package `in`.yasir.otptextview
+package com.github.leodan11.otptextview
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,7 +11,6 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
-import `in`.aabhasjindal.otptextview.R
 
 class ItemView : FrameLayout {
 
@@ -134,6 +133,7 @@ class ItemView : FrameLayout {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     fun setText(value: String) {
         if (!hideOTP) {
             if (textView != null) {

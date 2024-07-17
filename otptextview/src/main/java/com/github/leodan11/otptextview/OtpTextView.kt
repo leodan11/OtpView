@@ -1,4 +1,4 @@
-package `in`.yasir.otptextview
+package com.github.leodan11.otptextview
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,12 +11,12 @@ import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import `in`.aabhasjindal.otptextview.R
 import java.util.*
 import java.util.regex.Pattern
 
 class OtpTextView : FrameLayout {
 
+    private lateinit var pattern: String
     private var itemViews: MutableList<ItemView>? = null
     private var otpChildEditText: OTPChildEditText? = null
     var otpListener: OTPListener? = null
@@ -27,10 +27,11 @@ class OtpTextView : FrameLayout {
         get() = InputFilter { source, start, end, _, _, _ ->
             for (i in start until end) {
                 if (!Pattern.compile(
-                                PATTERN
+                        pattern
                     )
-                                .matcher(source[i].toString())
-                                .matches()) {
+                        .matcher(source[i].toString())
+                        .matches()
+                ) {
                     return@InputFilter ""
                 }
             }
@@ -48,12 +49,17 @@ class OtpTextView : FrameLayout {
         init(attrs)
     }
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         init(attrs)
     }
 
     private fun init(attrs: AttributeSet?) {
         val styles = context.obtainStyledAttributes(attrs, R.styleable.OtpTextView)
+        pattern = styles.getString(R.styleable.OtpTextView_otp_pattern) ?: DEFAULT_PATTERN
         styleEditTexts(styles, attrs)
         styles.recycle()
     }
@@ -71,38 +77,46 @@ class OtpTextView : FrameLayout {
                 R.styleable.OtpTextView_width, Utils.getPixels(
                     context,
                     DEFAULT_WIDTH
-                ).toFloat()).toInt()
+                ).toFloat()
+            ).toInt()
             val height = styles.getDimension(
                 R.styleable.OtpTextView_height, Utils.getPixels(
                     context,
                     DEFAULT_HEIGHT
-                ).toFloat()).toInt()
+                ).toFloat()
+            ).toInt()
             val space = styles.getDimension(
                 R.styleable.OtpTextView_box_margin, Utils.getPixels(
                     context,
                     DEFAULT_SPACE
-                ).toFloat()).toInt()
+                ).toFloat()
+            ).toInt()
             val spaceLeft = styles.getDimension(
                 R.styleable.OtpTextView_box_margin_left, Utils.getPixels(
                     context,
                     DEFAULT_SPACE_LEFT
-                ).toFloat()).toInt()
+                ).toFloat()
+            ).toInt()
             val spaceRight = styles.getDimension(
                 R.styleable.OtpTextView_box_margin_right, Utils.getPixels(
                     context,
                     DEFAULT_SPACE_RIGHT
-                ).toFloat()).toInt()
+                ).toFloat()
+            ).toInt()
             val spaceTop = styles.getDimension(
                 R.styleable.OtpTextView_box_margin_top, Utils.getPixels(
                     context,
                     DEFAULT_SPACE_TOP
-                ).toFloat()).toInt()
+                ).toFloat()
+            ).toInt()
             val spaceBottom = styles.getDimension(
                 R.styleable.OtpTextView_box_margin_bottom, Utils.getPixels(
                     context,
                     DEFAULT_SPACE_BOTTOM
-                ).toFloat()).toInt()
-            val otpMatchParent = styles.getBoolean(R.styleable.OtpTextView_otp_box_match_parent, false)
+                ).toFloat()
+            ).toInt()
+            val otpMatchParent =
+                styles.getBoolean(R.styleable.OtpTextView_otp_box_match_parent, false)
             val params = if (otpMatchParent) LinearLayout.LayoutParams(width, height, 1f)
             else LinearLayout.LayoutParams(width, height)
             if (space > 0) {
@@ -111,7 +125,10 @@ class OtpTextView : FrameLayout {
                 params.setMargins(spaceLeft, spaceTop, spaceRight, spaceBottom)
             }
 
-            val editTextLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            val editTextLayoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
             editTextLayoutParams.gravity = Gravity.CENTER
             otpChildEditText = OTPChildEditText(context)
             otpChildEditText?.filters = arrayOf(filter, InputFilter.LengthFilter(length))
@@ -120,7 +137,10 @@ class OtpTextView : FrameLayout {
             addView(otpChildEditText, editTextLayoutParams)
 
 
-            val linearLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            val linearLayoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
             val linearLayout = LinearLayout(context)
 
             addView(linearLayout, linearLayoutParams)
@@ -180,7 +200,7 @@ class OtpTextView : FrameLayout {
      * added by pth
      */
     private fun setFocusDetection(otpChildEditText: OTPChildEditText?) {
-        otpChildEditText?.onFocusChangeListener = OnFocusChangeListener { view, b ->
+        otpChildEditText?.onFocusChangeListener = OnFocusChangeListener { view, _ ->
             if (view.isFocused) {
                 otp?.let {
                     setFocus(it.length)
@@ -272,6 +292,6 @@ class OtpTextView : FrameLayout {
         private const val DEFAULT_SPACE_TOP = 4
         private const val DEFAULT_SPACE_BOTTOM = 4
 
-        private const val PATTERN = "[A-Za-z]*"
+        private const val DEFAULT_PATTERN = "[A-Za-z]*"
     }
 }

@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
         android:lineSpacingExtra="4dp"
         android:text="@string/please_type_the_verification_code_sent_to_n_9xxxxxxx19"
         android:textAlignment="center"
@@ -33,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <in.yasir.otptextview.OtpTextView
+    <com.github.leodan11.otptextview.OtpTextView
         android:id="@+id/otp_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

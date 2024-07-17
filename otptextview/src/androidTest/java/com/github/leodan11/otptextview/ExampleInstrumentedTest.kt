@@ -1,4 +1,4 @@
-package `in`.aabhasjindal.otptextview
+package com.github.leodan11.otptextview
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -16,8 +16,8 @@ class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
         // Context of the app under test.
-        val appContext = InstrumentationRegistry.getTargetContext()
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
 
-        assertEquals("in.aabhasjindal.otptextview.test", appContext.getPackageName())
+        assertEquals("com.github.leodan11.otptextview.test", appContext.packageName)
     }
 }
