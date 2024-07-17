@@ -57,3 +57,24 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.leodan11'
+                artifactId = 'OtpView'
+                version = '2.0.0'
+
+                pom {
+                    name = "OtpView"
+                    description = "A custom view to enter otp/pin of different sizes used usually in cases of authentication."
+                    url = "https://github.com/leodan11/OtpView"
+                }
+
+            }
+        }
+    }
+}
