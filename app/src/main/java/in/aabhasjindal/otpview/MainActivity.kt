@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(applicationContext, (R.color.black))
         val errorButton = findViewById<Button>(R.id.button)
         val successButton = findViewById<Button>(R.id.button2)
+        val valueButton = findViewById<Button>(R.id.button3)
         otpTextView = findViewById(R.id.otp_view)
         otpTextView?.requestFocusOTP()
         otpTextView?.otpListener = object : OTPListener {
@@ -34,5 +35,6 @@ class MainActivity : AppCompatActivity() {
         }
         errorButton.setOnClickListener { otpTextView?.showError() }
         successButton.setOnClickListener { otpTextView?.showSuccess() }
+        valueButton.setOnClickListener {  Toasty.info(this@MainActivity, "The OTP is ${otpTextView?.otp}", Toast.LENGTH_SHORT).show() }
     }
 }

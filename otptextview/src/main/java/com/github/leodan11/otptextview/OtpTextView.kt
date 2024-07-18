@@ -275,6 +275,11 @@ class OtpTextView : FrameLayout {
         otpChildEditText?.setText(otp)
     }
 
+    fun setOTPPattern(pattern: String) {
+        this.pattern = pattern
+        requestLayout()
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun setOnTouchListener(l: OnTouchListener) {
         super.setOnTouchListener(l)
