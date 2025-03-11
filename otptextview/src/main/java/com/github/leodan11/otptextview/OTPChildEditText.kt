@@ -3,9 +3,10 @@ package com.github.leodan11.otptextview
 import android.content.Context
 import android.text.InputType
 import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 
-internal class OTPChildEditText : androidx.appcompat.widget.AppCompatEditText {
+internal class OTPChildEditText : AppCompatEditText {
 
     constructor(context: Context) : super(context) {
         init(context)
@@ -15,7 +16,11 @@ internal class OTPChildEditText : androidx.appcompat.widget.AppCompatEditText {
         init(context)
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         init(context)
     }
 

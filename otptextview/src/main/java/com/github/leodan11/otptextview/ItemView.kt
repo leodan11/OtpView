@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.content.withStyledAttributes
 
 class ItemView : FrameLayout {
 
@@ -42,9 +43,9 @@ class ItemView : FrameLayout {
 
     @SuppressLint("CustomViewStyleable")
     private fun init(attrs: AttributeSet?) {
-        val styles = context.obtainStyledAttributes(attrs, R.styleable.OtpTextView)
-        generateViews(styles)
-        styles.recycle()
+        context.withStyledAttributes(attrs, R.styleable.OtpTextView) {
+            generateViews(this)
+        }
     }
 
     private fun generateViews(styles: TypedArray) {

@@ -13,6 +13,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import java.util.*
 import java.util.regex.Pattern
+import androidx.core.content.withStyledAttributes
 
 class OtpTextView : FrameLayout {
 
@@ -58,10 +59,10 @@ class OtpTextView : FrameLayout {
     }
 
     private fun init(attrs: AttributeSet?) {
-        val styles = context.obtainStyledAttributes(attrs, R.styleable.OtpTextView)
-        pattern = styles.getString(R.styleable.OtpTextView_otp_pattern) ?: DEFAULT_PATTERN
-        styleEditTexts(styles, attrs)
-        styles.recycle()
+        context.withStyledAttributes(attrs, R.styleable.OtpTextView) {
+            pattern = getString(R.styleable.OtpTextView_otp_pattern) ?: DEFAULT_PATTERN
+            styleEditTexts(this, attrs)
+        }
     }
 
     private fun styleEditTexts(styles: TypedArray, attrs: AttributeSet?) {
