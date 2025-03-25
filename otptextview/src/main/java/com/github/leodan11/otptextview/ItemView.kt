@@ -142,7 +142,7 @@ class ItemView : FrameLayout {
             }
         } else {
             textView?.text = ""
-            if (value == "") {
+            if (value.isEmpty()) {
                 textView?.setBackgroundResource(defaultOTPDrawable)
             } else {
                 textView?.setBackgroundResource(hideOTPDrawable)

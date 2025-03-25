@@ -8,12 +8,12 @@ import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.Gravity
+import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import java.util.*
-import java.util.regex.Pattern
 import androidx.core.content.withStyledAttributes
+import java.util.regex.Pattern
 
 class OtpTextView : FrameLayout {
 
@@ -22,7 +22,8 @@ class OtpTextView : FrameLayout {
     private var otpChildEditText: OTPChildEditText? = null
     var otpListener: OTPListener? = null
 
-    private var length: Int = 0
+    var length: Int = 0
+        private set
 
     private val filter: InputFilter
         get() = InputFilter { source, start, end, _, _, _ ->
@@ -246,6 +247,10 @@ class OtpTextView : FrameLayout {
         }
     }
 
+    fun clearFocusOTP() {
+        otpChildEditText?.clearFocus()
+    }
+
     fun requestFocusOTP() {
         otpChildEditText?.requestFocus()
     }
@@ -278,7 +283,7 @@ class OtpTextView : FrameLayout {
 
     fun setOTPPattern(pattern: String) {
         this.pattern = pattern
-        requestLayout()
+        this.requestLayout()
     }
 
     @SuppressLint("ClickableViewAccessibility")
