@@ -22,7 +22,7 @@ class OtpTextView : FrameLayout {
     private var otpChildEditText: OTPChildEditText? = null
     var otpListener: OTPListener? = null
 
-    var length: Int = 0
+    var length: Int = DEFAULT_LENGTH
         private set
 
     private val filter: InputFilter
@@ -56,19 +56,15 @@ class OtpTextView : FrameLayout {
         attrs,
         defStyleAttr
     ) {
-        init(attrs)
+        init(attrs, defStyleAttr)
     }
 
-    private fun init(attrs: AttributeSet?) {
-        context.withStyledAttributes(attrs, R.styleable.OtpTextView) {
+    private fun init(attrs: AttributeSet?, defStyleAttr: Int = 0) {
+        context.withStyledAttributes(attrs, R.styleable.OtpTextView, defStyleAttr) {
             pattern = getString(R.styleable.OtpTextView_otp_pattern) ?: DEFAULT_PATTERN
-            styleEditTexts(this, attrs)
+            length = getInt(R.styleable.OtpTextView_length, length)
+            generateViews(this, attrs)
         }
-    }
-
-    private fun styleEditTexts(styles: TypedArray, attrs: AttributeSet?) {
-        length = styles.getInt(R.styleable.OtpTextView_length, DEFAULT_LENGTH)
-        generateViews(styles, attrs)
     }
 
     private fun generateViews(styles: TypedArray, attrs: AttributeSet?) {
