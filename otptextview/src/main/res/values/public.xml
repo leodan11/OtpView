@@ -3,5 +3,6 @@
     <public name="ic_default_bg_box" type="drawable" />
     <public name="ic_default_bg_box_active" type="drawable" />
     <public name="ic_default_bg_box_error" type="drawable" />
+    <public name="ic_default_bg_box_inactive" type="drawable" />
     <public name="ic_default_bg_box_success" type="drawable" />
 </resources>
