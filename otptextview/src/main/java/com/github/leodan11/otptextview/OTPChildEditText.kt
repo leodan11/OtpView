@@ -26,7 +26,7 @@ internal class OTPChildEditText : AppCompatEditText {
 
     private fun init(context: Context) {
         isCursorVisible = false
-        setTextColor(ContextCompat.getColor(context, R.color.transparent))
+        setTextColor(ContextCompat.getColor(context, android.R.color.transparent))
         setBackgroundDrawable(null)
         inputType = InputType.TYPE_CLASS_TEXT
         setSelectAllOnFocus(false)
