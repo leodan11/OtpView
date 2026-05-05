@@ -19,10 +19,6 @@ class MainActivity : AppCompatActivity() {
         otpTextView = findViewById(R.id.otp_view)
         otpTextView?.requestFocusOTP()
         otpTextView?.otpListener = object : OTPListener {
-            override fun onInteractionListener() {
-
-            }
-
             override fun onOTPComplete(otp: String) {
                 Toast.makeText(this@MainActivity, "The OTP is $otp", Toast.LENGTH_SHORT).show()
             }

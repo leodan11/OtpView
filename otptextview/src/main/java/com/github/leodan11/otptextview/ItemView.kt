@@ -136,7 +136,7 @@ class ItemView : FrameLayout {
         barErrorColor = styles.getColor(
             R.styleable.OtpTextView_bar_error_color, ResourcesCompat.getColor(
                 context.resources,
-                R.color.red, null
+                android.R.color.holo_red_light, null
             )
         )
         barSuccessColor = styles.getColor(

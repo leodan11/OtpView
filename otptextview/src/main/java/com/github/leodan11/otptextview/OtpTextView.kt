@@ -166,9 +166,7 @@ class OtpTextView : FrameLayout {
              * @param count
              * @param after
              */
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-
-            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {  }
 
             /**
              * @param s
@@ -180,16 +178,14 @@ class OtpTextView : FrameLayout {
                 setOTP(s)
                 setFocus(s.length)
                 otpListener?.let { otpListener ->
-                    otpListener.onInteractionListener()
+                    otpListener.onInteractionListener(char = s)
                     if (s.length == length) {
                         otpListener.onOTPComplete(s.toString())
                     }
                 }
             }
 
-            override fun afterTextChanged(s: Editable) {
-
-            }
+            override fun afterTextChanged(s: Editable) {  }
         })
     }
 

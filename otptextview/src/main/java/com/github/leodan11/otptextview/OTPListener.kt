@@ -4,7 +4,7 @@ interface OTPListener {
     /**
      * Callback Fired when user starts typing in the OTP/PIN box.
      */
-    fun onInteractionListener()
+    fun onInteractionListener(char: CharSequence) {  }
 
     /**
      * @param otp Filled OTP
