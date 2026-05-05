@@ -1,4 +1,4 @@
-package com.github.leodan11.otptextview
+package com.github.leodan11.otptextview.content
 
 interface OTPListener {
     /**

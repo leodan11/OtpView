@@ -1,4 +1,4 @@
-package com.github.leodan11.otptextview
+package com.github.leodan11.otptextview.helper
 
 import android.content.Context
 import android.util.TypedValue

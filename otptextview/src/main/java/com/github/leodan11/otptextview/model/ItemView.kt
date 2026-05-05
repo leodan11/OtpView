@@ -1,4 +1,4 @@
-package com.github.leodan11.otptextview
+package com.github.leodan11.otptextview.model
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,6 +12,8 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.withStyledAttributes
+import com.github.leodan11.otptextview.R
+import com.github.leodan11.otptextview.helper.Utils
 
 class ItemView : FrameLayout {
 

@@ -12,6 +12,9 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.core.content.withStyledAttributes
+import com.github.leodan11.otptextview.helper.Utils
+import com.github.leodan11.otptextview.content.OTPListener
+import com.github.leodan11.otptextview.model.ItemView
 import java.util.regex.Pattern
 
 class OtpTextView : FrameLayout {

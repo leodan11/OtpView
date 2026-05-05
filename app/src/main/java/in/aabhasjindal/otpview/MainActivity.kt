@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.github.leodan11.otptextview.OTPListener
+import com.github.leodan11.otptextview.content.OTPListener
 import com.github.leodan11.otptextview.OtpTextView
 
 class MainActivity : AppCompatActivity() {
